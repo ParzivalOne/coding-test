@@ -1,0 +1,7 @@
+@CodingTest_HostAddress = http://localhost:5210
+@StoryNumber = 10
+
+GET {{CodingTest_HostAddress}}/news/best/{{StoryNumber}}
+Accept: application/json
+
+###

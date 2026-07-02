@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="CodingTest.Domain/CodingTest.Domain.csproj" Id="fb808083-2f49-4f79-b379-3bd8e851ee5e" />
+  <Project Path="CodingTest.Infrastructure/CodingTest.Infrastructure.csproj" Id="21156c31-283e-44e9-9ba5-e6e024b4d02a" />
+  <Project Path="CodingTest/CodingTest.csproj" />
+</Solution>
