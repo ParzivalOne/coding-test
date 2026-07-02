@@ -56,6 +56,8 @@ Run with Docker
 
 Notes
 - The project expects HackerNews API configuration under the `HackerNewsApi` section. You can also provide these values via environment variables.
+- I assumed that we need only one endpoint so i didn't separate the getBestNewsIds and the getById.
+- I assumed that the news itself are immutable, and adopted a separate caching expiration strategy for the getBestNewsIds and the GetById so the news itself have a longer caching time but the list of best news, that change more frequently, have a shorter one.
 - The first request will take a little more to execute as we hit the external api, after that the caching make it very fast.
 
 Next steps / improvements
