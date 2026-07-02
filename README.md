@@ -56,6 +56,7 @@ Run with Docker
 
 Notes
 - The project expects HackerNews API configuration under the `HackerNewsApi` section. You can also provide these values via environment variables.
+- The first request will take a little more to execute as we hit the external api, after that the caching make it very fast.
 
 Next steps / improvements
 
