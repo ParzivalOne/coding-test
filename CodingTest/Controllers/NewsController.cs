@@ -12,7 +12,7 @@ namespace CodingTest.Controllers
 
         [HttpGet]
         [Route("best/{storyNumber}")]
-        public async Task<BestNNewsResponse> GetBestNStoriesAsync([FromRoute] int storyNumber)
+        public async Task<List<HackerNewsGetByIdResponse>> GetBestNStoriesAsync([FromRoute] int storyNumber)
         {
             return await _newsService.GetBestNewsAsync(storyNumber);
         }

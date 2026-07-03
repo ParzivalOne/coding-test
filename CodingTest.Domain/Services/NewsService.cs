@@ -24,7 +24,7 @@ namespace CodingTest.Domain.Services
         private const string SPECIFIC_NEWS_CACHE_KEY_PREFIX = "SpecificNews_";
         private const int MAX_CONCURRENCY = 8;
 
-        public async Task<BestNNewsResponse> GetBestNewsAsync(int storyNumber)
+        public async Task<List<HackerNewsGetByIdResponse>> GetBestNewsAsync(int storyNumber)
         {
             var bestNewsResponse = await _cache.GetOrCreateAsync(BEST_NEWS_CACHE_KEY, async entry =>
             {
@@ -73,12 +73,7 @@ namespace CodingTest.Domain.Services
             var results = await Task.WhenAll(fetchTasks);
             var newsList = results.Where(x => x != null).ToList();
 
-            var top = newsList.OrderByDescending(n => n.Score).Take(storyNumber).ToList();
-
-            return new BestNNewsResponse
-            {
-                BestNews = top
-            };
+            return newsList.OrderByDescending(n => n.Score).Take(storyNumber).ToList();
         }
     }
 }

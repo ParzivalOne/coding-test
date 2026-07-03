@@ -4,6 +4,6 @@ namespace CodingTest.Domain.Interfaces
 {
     public interface INewsService
     {
-        Task<BestNNewsResponse> GetBestNewsAsync(int storyNumber);
+        Task<List<HackerNewsGetByIdResponse>> GetBestNewsAsync(int storyNumber);
     }
 }
