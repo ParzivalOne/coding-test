@@ -4,6 +4,7 @@ using CodingTest.Domain.Models.Options;
 using CodingTest.Domain.Services;
 using CodingTest.Infrastructure.Services;
 using Microsoft.Extensions.Options;
+using Microsoft.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +12,17 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddOpenApi();
+// Swagger / OpenAPI
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "CodingTest API",
+        Version = "v1",
+        Description = "API to retrieve best Hacker News stories"
+    });
+});
 
 builder.Services.Configure<HackerNewsApiOptions>(builder.Configuration.GetSection("HackerNewsApi"));
 builder.Services.Configure<CacheOptions>(builder.Configuration.GetSection("Cache"));
@@ -31,9 +42,12 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 
-app.MapOpenApi();
-app.UseSwaggerUI(options => {
-    options.SwaggerEndpoint("/openapi/v1.json", "v1");
+app.UseSwagger();
+app.UseSwaggerUI(options =>
+{
+    options.SwaggerEndpoint("/swagger/v1/swagger.json", "CodingTest API V1");
+    // Serve the UI at application root
+    options.RoutePrefix = string.Empty;
 });
 
 app.UseHttpsRedirection();

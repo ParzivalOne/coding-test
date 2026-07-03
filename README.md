@@ -54,9 +54,15 @@ Run with Docker
 
    curl http://localhost:8080/News/best/10
 
+Test with Swagger UI
+
+- After starting the application (locally or in Docker), open a browser and navigate to the application root to access the Swagger UI.
+  - Local run (example): http://localhost:5000/
+  - Docker run (example): http://localhost:8080/
+- Use the interactive Swagger UI to explore the available endpoints and execute requests (for example, GET /News/best/{storyNumber}).
+
 Notes
 - The project expects HackerNews API configuration under the `HackerNewsApi` section. You can also provide these values via environment variables.
-- I assumed that we need only one endpoint so i didn't separate the getBestNewsIds and the getById.
 - I assumed that the news itself are immutable, and adopted a separate caching expiration strategy for the getBestNewsIds and the GetById so the news itself have a longer caching time but the list of best news, that change more frequently, have a shorter one.
 - The first request will take a little more to execute as we hit the external api, after that the caching make it very fast.
 
