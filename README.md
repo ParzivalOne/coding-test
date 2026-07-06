@@ -68,9 +68,9 @@ Notes
 
 Next steps / improvements
 
-- Distributed cache: replace the in-memory cache with a distributed cache (Redis, Memcached) to enable horizontal scaling across multiple instances and keep cache state consistent across replicas.
+- Distributed cache: replace the in-memory cache with a distributed cache (Redis, Memcached) to enable horizontal scaling across multiple instances and keep cache state consistent across replicas. Can also use Hybrid Cache, a strategy that uses distributed cache and after the first fetch stores the data on a memory cache.
 - Resilience and retries: add transient-fault-handling (Polly) policies—retries with backoff, circuit breaker, and timeouts—for external HTTP calls to Hacker News.
 - Pagination: server-side pagination endpoints to reduce request volume.
 - Configuration validation: add IOptions validation to fail fast when required settings are missing or invalid.
 - Testing: add unit tests for services, integration tests for the API.
-- Container & orchestration: add Kubernetes manifests/Helm charts, readiness probes, resource requests/limits, and HPA for horizontal scaling.
+- Health Checks: Add liveness and readiness endpoints.
