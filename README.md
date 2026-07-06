@@ -74,3 +74,4 @@ Next steps / improvements
 - Configuration validation: add IOptions validation to fail fast when required settings are missing or invalid.
 - Testing: add unit tests for services, integration tests for the API.
 - Health Checks: Add liveness and readiness endpoints.
+- Authentication: Implement an authentication scheme, such as JWT or ApiKey
